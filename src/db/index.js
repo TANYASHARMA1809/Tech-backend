@@ -11,4 +11,6 @@ const connectDB=async()=>{
     }
 }
 
+//we make utility file for above function and make a wrapper function in which we can execute the code
+
 export default connectDB;
