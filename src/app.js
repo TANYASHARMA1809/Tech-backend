@@ -17,5 +17,25 @@ app.use(express.urlencoded({extended:true, limit:"18kb"}))
 app.use(express.static("public"))//to store some files or assests in public folder
 app.use(cookieParser())//access cokkies of user from server or operate crud operation to handle secure cookies from server
 
+
+// import routes
+import userRouter from "./routes/user.routes.js"
+
+//routes declaration= earlier we were using get method but now we are using middleware so we will handle it by use methos
+
+app.use("/api/v1/users",userRouter)
+
+//http://localgost:8000/api/v1/users/register
+
+
+
+
+
+
+
+
+
+
+
 export {app}
 
