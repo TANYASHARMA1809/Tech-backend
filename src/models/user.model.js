@@ -58,11 +58,20 @@ userSchema.pre("save",async function(next){
 })
 
 
-userSchema.methods.isPasswordCorrect=async function(password){
+userSchema.methods.isPasswordCorrect = async function(password){
      return await bcrypt.compare(password,this.password)
 }
 
-//access token is not going to save in db
+// access token is not going to save in db
+// access token is short lived
+// refresh token is long lived
+// access token ko jldi expire krdia jata hai
+// jab tk access token hai user k ps tb tk vo authentication kar skta hai
+// if login session is expired within 15min then we keep save refresh token in database as well as with user
+// user ko validate toh access token se he krte hai
+// par har br access token dalne ki jarurt nhi hai, agr user k ps refresh token hai toh ek end point hit krdo
+// agr access token or refresh token sme hogye toh nya access token dedega server user ko
+
 
 userSchema.methods.generateAccessToken=function(){
     return jwt.sign(
@@ -83,9 +92,9 @@ userSchema.methods.generateRefreshToken=function(){
     return jwt.sign(
         {
             _id:this._id,
-            email:this.email,
-            fullName:this.fullName,
-            username:this.username
+            // email:this.email,
+            // fullName:this.fullName,
+            // username:this.username
         },
         process.env.REFRESH_TOKEN_SECRET,
         {
