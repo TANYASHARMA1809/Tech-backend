@@ -21,7 +21,7 @@ app.use(cookieParser())//access cokkies of user from server or operate crud oper
 // import routes
 import userRouter from "./routes/user.routes.js"
 
-//routes declaration= earlier we were using get method but now we are using middleware so we will handle it by use methos
+//routes declaration= earlier we were using get method but now we are using middleware so we will handle it by use method
 
 app.use("/api/v1/users",userRouter)
 
