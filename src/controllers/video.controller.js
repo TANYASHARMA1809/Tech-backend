@@ -137,7 +137,7 @@ const video =await Video.aggregatePaginate(videoAggregate,options)
 const publishAVideo = asyncHandler(async (req, res) => {
     
     // get video, upload to cloudinary, create video
-
+    console.log("Publish video endpoint hit");
     const { title, description} = req.body
 
     if([title,description].some((field) => field?.trim() === "")){
@@ -430,6 +430,7 @@ const deleteVideo = asyncHandler(async (req, res) => {
 
 // toggle publish status of a video
 const togglePublishStatus = asyncHandler(async (req, res) => {
+    console.log("toogle is publish")
     const { videoId } = req.params
     if (!isValidObjectId(videoId)) {
         throw new ApiError(400, "Invalid videoId");
